@@ -6,9 +6,10 @@ describe('myApp.view1 module', function() {
 
   describe('view1 controller', function(){
 
-    it('should ....', inject(function($controller) {
+    it('should initialize circularBuffer array with length=size', inject(function($controller) {
       //spec body
       var scope = {}, view1Ctrl = $controller('View1Ctrl', {$scope:scope});
+      expect(scope.circularBuffer.length==scope.size);
       expect(view1Ctrl).toBeDefined();
     }));
 
