@@ -14,24 +14,26 @@ describe('myApp.view1 module', function() {
     }));
 
     it('should initialize circularBuffer array with length=size and position 0', function() {
-      expect(scope.circularBuffer.length==scope.size);
-      expect(scope.position==0);
+      expect(scope.circularBuffer.length).toBe(scope.size);
+      expect(scope.end).toBe(0);
     });
 
-    it('should add new value to current position', function() {
-        var currentPosition = scope.position;
+    it('should add new value to end', function() {
+        var end = scope.end;
         scope.add(5);
-        expect(scope.position==currentPosition+1);
-        expect(scope.circularBuffer[currentPosition]==5);
+        expect(scope.end).toBe(end+1);
+        expect(scope.circularBuffer[end]).toBe(5);
     });
 
-    it('should remove value from current position', function() {
+    it('should remove value from start, increment start', function() {
         scope.add(5);
-        var currentPosition = scope.position;
+        var start = scope.start;
         var temp = scope.remove();
-        expect(scope.position==currentPosition-1);
-        expect(scope.remove()==5);
+        expect(scope.start).toBe(start+1);
+        expect(temp).toBe(5);
+        expect(scope.circularBuffer[start-1]).toBe(undefined);
     });
+
 
   });
 });
