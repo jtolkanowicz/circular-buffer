@@ -2,9 +2,9 @@
 
 <p>Circular buffer, {{size}}!</p>
 
-<table>
+<table class="table table-bordered">
   <tr>
-     <td class="table table-bordered" ng-repeat="cell in circularBuffer track by $index">
+     <td ng-repeat="cell in circularBuffer track by $index">
         {{$index}}{{circularBuffer[index]}}
       </td>
   </tr>
