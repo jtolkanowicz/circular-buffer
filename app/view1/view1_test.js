@@ -34,6 +34,18 @@ describe('myApp.view1 module', function() {
         expect(scope.circularBuffer[start-1]).toBe(undefined);
     });
 
+/*    it('should add all values from array', function() {
+        var values = [1,2,3,4,5,6,7];
+        for (var i = 0; i < values.length; i++) {
+            scope.add(values[i]);
+        }
+        //restart controller
+        //var scopeState = scope;
+        //scope = scope.$new();
+        scope.addAll(values);
+        expect(scope).toBe(scopeState);
+    });*/
+
 
   });
 });

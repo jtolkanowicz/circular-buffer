@@ -20,10 +20,18 @@ angular.module('myApp.view1', ['ngRoute'])
         $scope.end++;
       }
 
+      $scope.addAll = function($values) {
+        if($values.length>0){
+            for (var i = 0; i < $values.length; i++) {
+                scope.add(values[i]);
+            }
+        }
+      }
+
       $scope.remove = function() {
         var $value = $scope.circularBuffer[$scope.start];
         $scope.start++;
-        //$scope.circularBuffer[$scope.start-1] = null;
+        $scope.circularBuffer[$scope.start-1] = null;
         return $value;
       }
 
