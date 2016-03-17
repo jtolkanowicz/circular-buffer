@@ -14,8 +14,8 @@ describe('myApp.view1 module', function() {
     }));
 
     it('should initialize circularBuffer array with length=size and position 0', function() {
-      expect(scope.circularBuffer.length).toBe(scope.size);
-      expect(scope.end).toBe(0);
+        expect(scope.circularBuffer.length).toBe(scope.size);
+        expect(scope.end).toBe(0);
     });
 
     it('should add new value to end', function() {
@@ -23,6 +23,15 @@ describe('myApp.view1 module', function() {
         scope.add(5);
         expect(scope.end).toBe(end+1);
         expect(scope.circularBuffer[end]).toBe(5);
+    });
+
+    it('should add new value from inputValue and reset inputValue', function() {
+        var end = scope.end;
+        scope.inputValue = 10;
+        scope.addInputValue();
+        expect(scope.end).toBe(end+1);
+        expect(scope.circularBuffer[end]).toBe(10);
+        expect(scope.inputValue).toBe("");
     });
 
     it('should remove value from start, increment start', function() {
@@ -33,6 +42,7 @@ describe('myApp.view1 module', function() {
         expect(temp).toBe(5);
         expect(scope.circularBuffer[start-1]).toBe(undefined);
     });
+
 
 /*    it('should add all values from array', function() {
         var values = [1,2,3,4,5,6,7];

@@ -13,6 +13,7 @@ angular.module('myApp.view1', ['ngRoute'])
       $scope.size = 7; //get size function
       $scope.start = 0;
       $scope.end = 0;
+      $scope.inputValue = "";
       $scope.circularBuffer = new Array ($scope.size);
 
       $scope.add = function($value) {
@@ -20,12 +21,10 @@ angular.module('myApp.view1', ['ngRoute'])
         $scope.end++;
       }
 
-      $scope.addAll = function($values) {
-        if($values.length>0){
-            for (var i = 0; i < $values.length; i++) {
-                scope.add(values[i]);
-            }
-        }
+      $scope.addInputValue = function(){
+        alert("Adding " + $scope.inputValue);
+        $scope.add($scope.inputValue);
+        $scope.inputValue = "";
       }
 
       $scope.remove = function() {
@@ -34,5 +33,6 @@ angular.module('myApp.view1', ['ngRoute'])
         $scope.circularBuffer[$scope.start-1] = null;
         return $value;
       }
+
 
 }]);
