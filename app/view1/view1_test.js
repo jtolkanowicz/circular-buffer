@@ -40,8 +40,18 @@ describe('myApp.view1 module', function() {
         var temp = scope.remove();
         expect(scope.start).toBe(start+1);
         expect(temp).toBe(5);
-        expect(scope.circularBuffer[start-1]).toBe(undefined);
+        expect(scope.circularBuffer[start].value).toBe("");
     });
+
+    it('should not change start and end if empty, returned value shoud be empty', function() {
+        var start = scope.start;
+        var end = scope.end;
+        var temp = scope.remove();
+        expect(scope.start).toBe(start);
+        expect(scope.end).toBe(end);
+        expect(temp).toBe("");
+    });
+
 
 
 /*    it('should add all values from array', function() {

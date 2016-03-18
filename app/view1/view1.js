@@ -32,8 +32,10 @@ angular.module('myApp.view1', ['ngRoute'])
 
       $scope.remove = function() {
         var $cell = $scope.circularBuffer[$scope.start];
-        $scope.start++;
-        $scope.circularBuffer[$scope.start-1] = null;
+        $scope.circularBuffer[$scope.start] = {value : ""};
+        if($scope.start < $scope.end) {
+            $scope.start++;
+        }
         return $cell.value;
       }
 
