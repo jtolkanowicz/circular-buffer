@@ -22,7 +22,7 @@ angular.module('myApp.view1', ['ngRoute'])
 
       $scope.add = function($value) {
         $scope.circularBuffer[$scope.end] = {value : $value};
-        $scope.end++;
+        $scope.end = ($scope.end+1)%$scope.size;
       }
 
       $scope.addInputValue = function(){
