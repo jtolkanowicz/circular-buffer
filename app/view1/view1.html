@@ -6,7 +6,7 @@
 <table class="table table-bordered">
   <tr>
      <td ng-repeat="cell in circularBuffer track by $index">
-        {{circularBuffer[index]}}
+         <span ng-bind="circularBuffer[$index].value"></span>
       </td>
   </tr>
 </table>
