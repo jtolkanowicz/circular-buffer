@@ -5,6 +5,8 @@ All information about building and running is explained in angular-seed README.
 
 # Backlog
 
+
+
 //test going from 6 to 0
 
 //test overwriting elements
@@ -13,5 +15,8 @@ All information about building and running is explained in angular-seed README.
 
 //multipletest with more elements
 
-Scala backend
-Spring boot backend
+//add styles (alignment, cell size)
+
+//Scala backend AKKA
+
+//Spring boot backend
