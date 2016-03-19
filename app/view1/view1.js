@@ -14,24 +14,27 @@ angular.module('myApp.view1', ['ngRoute'])
       $scope.start = 0;
       $scope.end = 0;
       $scope.inputValue = "";
-      $scope.circularBuffer = new Array ($scope.size);
+
+      $scope.circularBuffer = [];
+      for (var i = 0; i < $scope.size; i++) {
+          $scope.circularBuffer.push({value : ""});
+      }
 
       $scope.add = function($value) {
-        $scope.circularBuffer[$scope.end] = $value;
+        $scope.circularBuffer[$scope.end] = {value : $value};
         $scope.end++;
       }
 
       $scope.addInputValue = function(){
-        alert("Adding " + $scope.inputValue);
         $scope.add($scope.inputValue);
         $scope.inputValue = "";
       }
 
       $scope.remove = function() {
-        var $value = $scope.circularBuffer[$scope.start];
+        var $cell = $scope.circularBuffer[$scope.start];
         $scope.start++;
         $scope.circularBuffer[$scope.start-1] = null;
-        return $value;
+        return $cell.value;
       }
 
 

@@ -22,7 +22,7 @@ describe('myApp.view1 module', function() {
         var end = scope.end;
         scope.add(5);
         expect(scope.end).toBe(end+1);
-        expect(scope.circularBuffer[end]).toBe(5);
+        expect(scope.circularBuffer[end].value).toBe(5);
     });
 
     it('should add new value from inputValue and reset inputValue', function() {
@@ -30,7 +30,7 @@ describe('myApp.view1 module', function() {
         scope.inputValue = 10;
         scope.addInputValue();
         expect(scope.end).toBe(end+1);
-        expect(scope.circularBuffer[end]).toBe(10);
+        expect(scope.circularBuffer[end].value).toBe(10);
         expect(scope.inputValue).toBe("");
     });
 
