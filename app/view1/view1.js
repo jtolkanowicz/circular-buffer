@@ -23,6 +23,9 @@ angular.module('myApp.view1', ['ngRoute'])
       $scope.add = function($value) {
         $scope.circularBuffer[$scope.end] = {value : $value};
         $scope.end = ($scope.end+1)%$scope.size;
+        if($scope.end==$scope.start){
+          $scope.start++;
+        }
       }
 
       $scope.addInputValue = function(){
@@ -33,7 +36,7 @@ angular.module('myApp.view1', ['ngRoute'])
       $scope.remove = function() {
         var $cell = $scope.circularBuffer[$scope.start];
         $scope.circularBuffer[$scope.start] = {value : ""};
-        if($scope.start < $scope.end) {
+        if($scope.start != $scope.end) {
             $scope.start++;
         }
         return $cell.value;

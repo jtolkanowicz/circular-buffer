@@ -60,13 +60,23 @@ describe('myApp.view1 module', function() {
         expect(scope.end).toBe(0);
     });
 
-    it('should overwrite if end is reached', function() {
+    it('should overwrite if full', function() {
         var size = scope.size+1;
         var start = scope.start;
         for (var i = 0; i < size; i++) {
           scope.add(i);
         }
         expect(scope.circularBuffer[start].value).toBe(size-1);
+    });
+
+    it('should return oldest when overwrote', function() {
+        var size = scope.size+2;
+        var start = scope.start;
+        for (var i = 0; i < size; i++) {
+          scope.add(i);
+        }
+        expect(scope.remove()).toBe(3);
+        expect(scope.remove()).toBe(4);
     });
 
 
