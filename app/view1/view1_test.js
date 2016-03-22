@@ -13,6 +13,27 @@ describe('myApp.view1 module', function() {
         $controller('View1Ctrl', {$scope: scope});
     }));
 
+    //New tests testing just behaviour
+
+    it('should return empty when new', function() {
+      expect(scope.remove()).toBe("");
+    });
+
+    it('should return first added value when not overwriting', function() {
+      var quantity = getRandomInt(1, scope.size);
+      var memory = new Array(scope.size);
+      for(var i = 0; i < quantity; i++) {
+        var value = getRandomInt(0, 9);
+        scope.add(value);
+        memory[i] = value;
+      }
+      for(var i = 0; i < quantity; i++) {
+        expect(scope.remove()).toBe(memory[i]);
+      }
+    });
+
+    //Old tests testing state
+
     it('should initialize circularBuffer array with length=size and position 0', function() {
         expect(scope.circularBuffer.length).toBe(scope.size);
         expect(scope.end).toBe(0);
@@ -25,14 +46,6 @@ describe('myApp.view1 module', function() {
         expect(scope.circularBuffer[end].value).toBe(5);
     });
 
-    it('should add new value from inputValue and reset inputValue', function() {
-        var end = scope.end;
-        scope.inputValue = 10;
-        scope.addInputValue();
-        expect(scope.end).toBe(end+1);
-        expect(scope.circularBuffer[end].value).toBe(10);
-        expect(scope.inputValue).toBe("");
-    });
 
     it('should remove value from start, increment start', function() {
         scope.add(5);
@@ -79,6 +92,14 @@ describe('myApp.view1 module', function() {
         expect(scope.remove()).toBe(4);
     });
 
+    it('should add new value from inputValue and reset inputValue', function() {
+        var end = scope.end;
+        scope.inputValue = 10;
+        scope.addInputValue();
+        expect(scope.end).toBe(end+1);
+        expect(scope.circularBuffer[end].value).toBe(10);
+        expect(scope.inputValue).toBe("");
+    });
 
 
 /*    it('should add all values from array', function() {
@@ -92,6 +113,11 @@ describe('myApp.view1 module', function() {
         scope.addAll(values);
         expect(scope).toBe(scopeState);
     });*/
+
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min+1) + min);
+    }
+
 
 
   });
