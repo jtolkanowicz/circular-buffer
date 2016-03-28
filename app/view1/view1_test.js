@@ -19,7 +19,7 @@ describe('myApp.view1 module', function() {
       expect(scope.remove()).toBe("");
     });
 
-    it('should return first added value when not overwriting', function() {
+    it('should return first/oldest added value when not overwriting', function() {
       var quantity = getRandomInt(1, scope.size);
       var memory = new Array(scope.size);
       for(var i = 0; i < quantity; i++) {
@@ -32,15 +32,20 @@ describe('myApp.view1 module', function() {
       }
     });
 
-    it('should return first added value when not overwriting', function() {
+    it('should return oldest added value when overwriting', function() {
       var quantity = getRandomInt(1, scope.size) + scope.size;
       var memory = new Array(quantity);
+      //alert("Adding");
       for(var i = 0; i < quantity; i++) {
         var value = getRandomInt(0, 9);
+        //printBuffer();
         scope.add(value);
         memory[i] = value;
       }
+      //alert("Removing");
+      //alert("Memory " + memory)
       for(var i = 0; i < scope.size; i++) {
+        //printBuffer();
         var value = scope.remove();
         expect(value).toBe(memory[quantity-scope.size+i]);
       }
@@ -102,8 +107,8 @@ describe('myApp.view1 module', function() {
         for (var i = 0; i < size; i++) {
           scope.add(i);
         }
+        expect(scope.remove()).toBe(2);
         expect(scope.remove()).toBe(3);
-        expect(scope.remove()).toBe(4);
     });
 
     it('should add new value from inputValue and reset inputValue', function() {
