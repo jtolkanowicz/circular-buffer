@@ -35,17 +35,12 @@ describe('myApp.view1 module', function() {
     it('should return oldest added value when overwriting', function() {
       var quantity = getRandomInt(1, scope.size) + scope.size;
       var memory = new Array(quantity);
-      //alert("Adding");
       for(var i = 0; i < quantity; i++) {
         var value = getRandomInt(0, 9);
-        //printBuffer();
         scope.add(value);
         memory[i] = value;
       }
-      //alert("Removing");
-      //alert("Memory " + memory)
-      for(var i = 0; i < scope.size; i++) {
-        //printBuffer();
+      for(var i = 0; i < scope.size; i++) {        
         var value = scope.remove();
         expect(value).toBe(memory[quantity-scope.size+i]);
       }
