@@ -32,6 +32,20 @@ describe('myApp.view1 module', function() {
       }
     });
 
+    it('should return first added value when not overwriting', function() {
+      var quantity = getRandomInt(1, scope.size) + scope.size;
+      var memory = new Array(quantity);
+      for(var i = 0; i < quantity; i++) {
+        var value = getRandomInt(0, 9);
+        scope.add(value);
+        memory[i] = value;
+      }
+      for(var i = 0; i < scope.size; i++) {
+        var value = scope.remove();
+        expect(value).toBe(memory[quantity-scope.size+i]);
+      }
+    });
+
     //Old tests testing state
 
     it('should initialize circularBuffer array with length=size and position 0', function() {
@@ -116,6 +130,14 @@ describe('myApp.view1 module', function() {
 
     function getRandomInt(min, max) {
       return Math.floor(Math.random() * (max - min+1) + min);
+    }
+
+    function printBuffer() {
+      var buffer = "Buffer ";
+      for(var i = 0; i < scope.size; i++) {
+        buffer = buffer + i + ". " + scope.circularBuffer[i].value + " | ";
+      }
+      alert(buffer + " start " + scope.start + " end " + scope.end);
     }
 
 
